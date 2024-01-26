@@ -1,0 +1,11 @@
+attributes:
+    - content
+    - foreign_keys
+    - inheritance
+    - primary_keys
+    - timestamps
+
+exclude:
+    - version
+    - update_at
+    - created_at

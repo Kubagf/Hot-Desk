@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_214755) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_26_110128) do
   create_table "desks", force: :cascade do |t|
     t.text "description"
-    t.boolean "available"
     t.decimal "x"
     t.decimal "y"
     t.datetime "created_at", null: false
