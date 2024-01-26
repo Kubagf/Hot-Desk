@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "static#index"
+  resources :reservations
+  resources :desks
+  resources :users
 end
