@@ -1,11 +1,4 @@
-<nav>
-    <ul>
-        <li><%= link_to "Strona główna", root_path %></li>
-        <li><%= link_to "Rezerwacje", reservations_path %></li>
-        <li><%= link_to "Biurka", desks_path %></li>
-        <li><%= link_to "Użytkownicy", users_path %></li>
-    </ul>
-</nav>
+
 <h1>Hot-Desk</h1>
 <% if user_signed_in? %> 
  <div> Welcome <%= current_user.email %> </div> 
