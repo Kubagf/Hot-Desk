@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :reservation
 
   validates :role, presence: true
+
+  def admin?
+    self.role == 'admin'
+  end
 end
