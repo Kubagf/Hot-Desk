@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_30_080434) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_30_135846) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,8 +41,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_080434) do
 
   create_table "desks", force: :cascade do |t|
     t.text "description"
-    t.decimal "x"
-    t.decimal "y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

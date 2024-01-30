@@ -4,6 +4,4 @@ class Desk < ApplicationRecord
   def available?(date)
     reservations.where('start_date <= ? AND end_date >= ?', date, date).empty?
   end
-  validates :x, presence: true
-  validates :y, presence: true
 end

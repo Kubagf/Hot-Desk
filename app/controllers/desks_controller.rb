@@ -90,7 +90,7 @@ class DesksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def desk_params
-      params.require(:desk).permit(:description, :available, :x, :y, :photo)
+      params.require(:desk).permit(:description, :available, :photo)
     end
     def authenticate_user!
       redirect_to root_path unless user_signed_in?
