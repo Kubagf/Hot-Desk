@@ -1,5 +1,9 @@
 <% if user_signed_in? %> 
-  <div> Witaj <%= current_user.email %> </div> 
+  <% if current_user.first_name.blank? || current_user.last_name.blank? %>
+    <div> Proszę uzupełnić imię i nazwisko </div>
+  <% else %>
+    <div> Witaj <%= current_user.email %> </div> 
+  <% end %>
 <% else %>
   <div> Proszę się zalogować </div>
 <% end %>

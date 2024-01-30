@@ -65,6 +65,6 @@ class DesksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def desk_params
-      params.require(:desk).permit(:description, :available, :x, :y)
+      params.require(:desk).permit(:description, :available, :x, :y, :photo)
     end
 end

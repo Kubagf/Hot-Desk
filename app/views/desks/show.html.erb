@@ -1,10 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @desk %>
+<div id="desk">
+  <p><strong>Description:</strong> <%= @desk.description %></p>
+  <p><strong>X coordinate:</strong> <%= @desk.x %></p>
+  <p><strong>Y coordinate:</strong> <%= @desk.y %></p>
+  <% if @desk.photo.attached? %>
+    <p><strong>Photo:</strong></p>
+    <%= image_tag @desk.photo %>
+  <% else %>
+    <p>No photo available.</p>
+  <% end %>
+</div>
 
 <div>
-  <%= link_to "Edit this desk", edit_desk_path(@desk) %> |
-  <%= link_to "Back to desks", desks_path %>
+  <% if current_user.admin? %>
+    <%= link_to "Edit this desk", edit_desk_path(@desk) %> |
+    <%= button_to "Destroy this desk", @desk, method: :delete %>
+  <% end %>
 
-  <%= button_to "Destroy this desk", @desk, method: :delete %>
+  <%= link_to "Back to desks", desks_path %>
 </div>

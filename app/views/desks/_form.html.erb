@@ -26,6 +26,11 @@
     <%= form.text_field :y %>
   </div>
 
+  <div class="field">
+    <%= form.label :photo, 'Zdjęcie biurka' %>
+    <%= form.file_field :photo, style: "display: block" %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
