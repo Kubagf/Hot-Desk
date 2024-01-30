@@ -74,3 +74,4 @@ gem "devise", "~> 4.9"
 gem "bootstrap", "~> 5.3"
 gem 'sassc-rails'
 gem 'whenever'
+gem 'mini_magick'
