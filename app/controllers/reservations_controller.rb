@@ -3,7 +3,11 @@ class ReservationsController < ApplicationController
 
   # GET /reservations or /reservations.json
   def index
-    @reservations = Reservation.all
+    if current_user.admin?
+      @reservations = Reservation.all
+    else
+      @reservations = current_user.reservation
+    end
   end
 
   # GET /reservations/1 or /reservations/1.json
@@ -13,6 +17,9 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    if current_user.user?
+      @reservation.user_id = current_user.id
+    end
   end
 
   # GET /reservations/1/edit
@@ -55,6 +62,10 @@ class ReservationsController < ApplicationController
       format.html { redirect_to reservations_url, notice: "Reservation was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def my_reservations
+    @my_reservations = current_user.reservation
   end
 
   private
