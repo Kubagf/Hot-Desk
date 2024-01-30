@@ -1,10 +1,13 @@
-<h1>Editing desk</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="mb-4">Editing desk</h1>
 
-<%= render "form", desk: @desk %>
+      <%= render "form", desk: @desk %>
 
-<br>
+      <br>
 
-<div>
-  <%= link_to "Show this desk", @desk %> |
-  <%= link_to "Back to desks", desks_path %>
+      <%= link_to "Back to desks", desks_path, class: "btn btn-secondary mr-2" %>
+    </div>
+  </div>
 </div>

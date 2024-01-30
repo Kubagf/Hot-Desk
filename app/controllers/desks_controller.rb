@@ -1,5 +1,6 @@
 class DesksController < ApplicationController
   before_action :set_desk, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /desks or /desks.json
   def index
@@ -90,5 +91,8 @@ class DesksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def desk_params
       params.require(:desk).permit(:description, :available, :x, :y, :photo)
+    end
+    def authenticate_user!
+      redirect_to root_path unless user_signed_in?
     end
 end

@@ -1,38 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-success"><%= notice %></p>
+      
+      <h1>Reservations</h1>
 
-<h1>Reservations</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>User ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Desk</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= reservation.user.id %></td>
-        <td><%= reservation.user.first_name %></td>
-        <td><%= reservation.user.last_name %></td>
-        <td><%= reservation.desk.description %></td>
-        <td><%= reservation.start_date %></td>
-        <td><%= reservation.end_date %></td>
-        <td>
-          <% if current_user.admin? %>
-            <%= link_to "Edit", edit_reservation_path(reservation), class: "btn btn-primary btn-sm" %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Desk</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reservations.each do |reservation| %>
+            <tr>
+              <td><%= reservation.user.id %></td>
+              <td><%= reservation.user.first_name %></td>
+              <td><%= reservation.user.last_name %></td>
+              <td><%= reservation.desk.description %></td>
+              <td><%= reservation.start_date %></td>
+              <td><%= reservation.end_date %></td>
+              <td>
+                <% if current_user.admin? %>
+                  <%= link_to "Edit", edit_reservation_path(reservation), class: "btn btn-primary btn-sm mr-2" %>
+                <% end %>
+                <%= button_to "Destroy", reservation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
           <% end %>
-        <%= button_to "Destroy", reservation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
 
-<%= link_to "New reservation", new_reservation_path, class: "btn btn-success" %>
-
+      <%= link_to "New reservation", new_reservation_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

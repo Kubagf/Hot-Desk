@@ -1,9 +1,43 @@
-<% if user_signed_in? %> 
-  <% if current_user.first_name.blank? || current_user.last_name.blank? %>
-    <div> Proszę uzupełnić imię i nazwisko </div>
-  <% else %>
-    <div> Witaj <%= current_user.email %> </div> 
-  <% end %>
-<% else %>
-  <div> Proszę się zalogować </div>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot-Desk</title>
+</head>
+<body>
+  <!-- Your HTML content here -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="text-center mt-5">
+          <h1 class="text-black">Hot-Desk</h1>
+        </div>
+        <div class="text-center mt-3">
+          <h2 class="text-black">Desk Reservation System</h2>
+        </div>
+        <div class="card mt-5">
+            <% if user_signed_in? %> 
+              <% if current_user.first_name.blank? || current_user.last_name.blank? %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  Please complete your first name and last name.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <% else %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Welcome, <%= current_user.email %>.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div> 
+              <% end %>
+            <% else %>
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                Please log in.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
