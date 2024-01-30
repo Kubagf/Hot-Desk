@@ -1,5 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
+<h1>Check Desk Availability</h1>
+<%= form_tag(check_availability_desks_path, method: :get) do %>
+  <div class="form-group">
+    <%= label_tag :desk_id, "Select Desk" %>
+    <%= select_tag :desk_id, options_from_collection_for_select(Desk.all, :id, :description), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :date, "Select Date" %>
+    <%= date_field_tag :date, nil, class: "form-control" %>
+  </div>
+
+  <%= submit_tag "Check Availability", class: "btn btn-primary" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <p style="color: green"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p style="color: red"><%= flash[:alert] %></p>
+<% end %>
+
 <h1>Desks</h1>
 
 <table class="table">

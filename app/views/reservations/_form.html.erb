@@ -10,14 +10,16 @@
       </ul>
     </div>
   <% end %>
+  
   <% if current_user.admin? %>
     <div>
       <%= form.label :user_id, style: "display: block" %>
-      <%= form.text_field :user_id %>
+      <%= form.collection_select :user_id, User.all, :id, :email %>
     </div>
   <% else %>
     <%= form.hidden_field :user_id, value: current_user.id %>
   <% end %>
+
   <div>
     <%= form.label :desk_id, style: "display: block" %>
     <%= form.collection_select :desk_id, Desk.all, :id, :description %>
@@ -25,12 +27,12 @@
 
   <div>
     <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+    <%= form.date_field :start_date, min: Date.today %>
   </div>
 
   <div>
     <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
+    <%= form.date_field :end_date, min: Date.today %>
   </div>
 
   <div>

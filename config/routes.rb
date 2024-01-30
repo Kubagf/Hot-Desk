@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :reservations
-  resources :desks
+  resources :desks do
+    collection do
+      get :check_availability
+    end
+  end
   resources :users
   resources :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -57,6 +57,30 @@ class DesksController < ApplicationController
     end
   end
 
+  def check_availability
+    desk_id = params[:desk_id]
+    date = params[:date]
+
+    if desk_id.present? && date.present?
+      desk = Desk.find(desk_id)
+      date = Date.parse(date)
+
+      if desk.available?(date)
+        if desk.reservations.where('start_date <= ? AND end_date >= ?', date, date).empty?
+          flash[:notice] = "Desk is available on #{date}."
+        else
+          flash[:alert] = "Desk is already reserved on #{date}."
+        end
+      else
+        flash[:alert] = "Desk is not available on #{date}."
+      end
+    else
+      flash[:alert] = "Please select a desk and a date."
+    end
+
+    redirect_to desks_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_desk
