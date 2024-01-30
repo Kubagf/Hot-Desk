@@ -25,7 +25,7 @@ class DesksController < ApplicationController
 
     respond_to do |format|
       if @desk.save
-        format.html { redirect_to desk_url(@desk), notice: "Desk was successfully created." }
+        format.html { redirect_to desks_url, notice: "Desk was successfully created." }
         format.json { render :show, status: :created, location: @desk }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DesksController < ApplicationController
   def update
     respond_to do |format|
       if @desk.update(desk_params)
-        format.html { redirect_to desk_url(@desk), notice: "Desk was successfully updated." }
+        format.html { redirect_to desks_url, notice: "Desk was successfully updated." }
         format.json { render :show, status: :ok, location: @desk }
       else
         format.html { render :edit, status: :unprocessable_entity }
