@@ -78,7 +78,6 @@ class DesksController < ApplicationController
     else
       flash[:alert] = "Please select a desk and a date."
     end
-
     redirect_to desks_path
   end
 
